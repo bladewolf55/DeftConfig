@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+  	<BaseName>base</BaseName>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="Exists('app.$(BaseName).config')">
+      <PropertyGroup>
+        <ConfigPrefix>app</ConfigPrefix>
+      </PropertyGroup>
+    </When>
+    <When Condition="Exists('web.$(BaseName).config')">
+      <PropertyGroup>
+        <ConfigPrefix>web</ConfigPrefix>
+      </PropertyGroup>
+    </When>
+  </Choose>
+
+  <PropertyGroup>
+	<EnableDeftConfig>false</EnableDeftConfig>
+	<EnableDeftConfig Condition="'$(ConfigPrefix)' != ''">true</EnableDeftConfig>
+  	<TransformSource>$(ConfigPrefix).$(BaseName).config</TransformSource>
+  	<TransformDestination>$(ConfigPrefix).config</TransformDestination>
+    <TransformTemp>$(TransformDestination).temp</TransformTemp>
+  	<UserProfileFile>$(APPDATA)\DeftConfig\$(ProjectGuid)\$(ConfigPrefix).$(BaseName).$(Configuration).config</UserProfileFile>
+  	<LocalFile>$(ConfigPrefix).$(BaseName).$(Configuration).config</LocalFile>
+  	<SampleFile>$(ConfigPrefix).$(BaseName).Sample.config</SampleFile>
+  	<TransformFile Condition="'$(TransformFile)' == '' AND Exists('$(UserProfileFile)')">$(UserProfileFile)</TransformFile>
+  	<TransformFile Condition="'$(TransformFile)' == '' AND Exists('$(LocalFile)')">$(LocalFile)</TransformFile>
+  	<TransformFile Condition="'$(TransformFile)' == '' AND Exists('$(SampleFile)')">$(SampleFile)</TransformFile>
+  </PropertyGroup>
+
+  <Target Name="DeftConfigStatus" AfterTargets="BeforeBuild" Condition="'$(EnableDeftConfig)' == 'false'">
+      <Message Text="ConfigPrefix = $(ConfigPrefix)" Importance="high" />
+      <Message Text="EnableDeftConfig = $(EnableDeftConfig)" Importance="high" />
+      <Error Text="You're using DeftConfig, which relies on certain files existing. The folder does not contain a 'web.$(BaseName).config' or 'app.$(BaseName).config' file. Transformations cannot be run to create the config file." />
+  </Target>
+
+  <!-- Required in order to use TransformXml with app.config -->
+  <!-- https://stackoverflow.com/a/24403553 -->
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Web\Microsoft.Web.Publishing.targets" />
+  
+  <Target Name="DeftConfig" AfterTargets="DeftConfigStatus" Condition="'$(EnableDeftConfig)' == 'true'">      
+      <Message Text="***** Running DeftConfig *****" Importance="high" />
+      <Message Text="  UserProfileFile = $(UserProfileFile)" Importance="high" />
+      <Message Text="  LocalFile = $(LocalFile)" Importance="high" />
+      <Message Text="  SampleFile = $(SampleFile)" Importance="high" />
+      <Message Text="  TransformSource = $(TransformSource)" Importance="high" />
+      <Message Text="  TransformFile = $(TransformFile)" Importance="high" />
+      <Message Text="  TransformDestination = $(TransformDestination)" Importance="high" />
+      <Message Text="  DeftConfig is finished." Importance="high" />
+      <TransformXml source="$(TransformSource)" transform="$(TransformFile)" destination="$(TransformTemp)" />
+      <Copy SourceFiles="$(TransformTemp)" DestinationFiles="$(TransformDestination)" OverwriteReadOnlyFiles="true" />
+      <Delete Files="$(TransformTemp)" />
+  </Target>
+
+</Project>

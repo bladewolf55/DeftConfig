@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>DeftConfig</id>
+    <version>1.0.0</version>
+    <authors>Charles L Flatt</authors>
+    <owners>Charles L Flatt</owners>
+    <projectUrl>https://github.com/bladewolf55/DeftConfig</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/bladewolf55/DeftConfig/master/images/juggler-64x64.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <summary>Transform base.config to web.config on F5/F6, and search for XmlTransform files in user profile.</summary>
+    <description>An MSBuild targets file and utility for implementing the "base.config" method of transforming web.config files, along with the ability to use XmlTransform files residing in the user profile. 
+
+Allows running user-specific settings in F5/F6, Publish, and Windows-based continuous integration, without having to commit developer or production configurations to version control.
+    </description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2018 Charles L Flatt</copyright>
+    <tags>msbuild configuration xmltransform</tags>
+  </metadata>
+</package>
