@@ -18,4 +18,4 @@ rem Package
 nuget pack ..\DeftConfig\DeftConfig.nuspec -o Package
 
 rem Publish
-nuget push Package\*.nupkg -Source https://int.nugettest.org/api/v2/package
+nuget push Package\*.nupkg -Source https://api.nuget.org/v3/index.json
