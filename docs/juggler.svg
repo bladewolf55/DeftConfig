@@ -37,7 +37,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="22.732322"
+     inkscape:cx="-65.656025"
      inkscape:cy="729.80416"
      inkscape:document-units="in"
      inkscape:current-layer="layer1"
@@ -114,24 +114,23 @@
          style="opacity:1;fill:#ff9200;fill-opacity:1;stroke:none;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
     </g>
     <g
-       id="g4553"
-       transform="matrix(0.21392667,0,0,0.21392667,-25.685586,221.17756)"
+       id="g853"
        inkscape:export-filename="C:\Users\charl\Google Drive\Documents\Clients\_SM\Apps\DeftConfig\images\juggler-100x100.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
       <rect
-         ry="22.728432"
-         y="214.25127"
-         x="-455.51566"
-         height="433.73428"
-         width="433.73428"
+         ry="4.8622179"
+         y="267.01163"
+         x="-123.13253"
+         height="92.787331"
+         width="92.787331"
          id="rect4544"
-         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#c95805;stroke-width:4.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.96267003;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
       <g
          inkscape:export-ydpi="96"
          inkscape:export-xdpi="96"
          id="g4599-3"
-         transform="translate(-620.09442,-25.825345)">
+         transform="matrix(0.21392667,0,0,0.21392667,-158.34032,215.65283)">
         <g
            style="clip-rule:evenodd;fill-rule:evenodd;stroke-width:0.00265349;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
            id="g4527-8"
@@ -171,7 +170,7 @@
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96">
       <rect
-         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#c95805;stroke-width:4.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:4.5;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
          id="rect4555"
          width="433.73428"
          height="433.73428"
