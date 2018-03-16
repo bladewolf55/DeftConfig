@@ -56,6 +56,14 @@ also enter 'exit'.
             }
             Show();
             ProjectFile = projectFiles[0];
+
+            input = Read("Change DeftConfigInitializer BuildAction to None? (RECOMMENDED). (y)es, or <enter> to continue", PromptColor);
+            if (input == "y" | input == "yes")
+            {
+                SetInitializerBuildActionToNone();
+            }
+
+
             ProjectGuid = GetProjectGuid();
             if (ProjectGuid.Length == 0)
             {
@@ -287,6 +295,22 @@ The recommended final steps for you are:
             var x1 = doc.Descendants().Attributes("Include").ToList();
             var x2 = x1.Where(a => a.Value == file).ToList();
             return x2;
+        }
+
+        static void SetInitializerBuildActionToNone()
+        {
+            XDocument doc = XDocument.Load(ProjectFile);
+            var ns = doc.Root.Name.Namespace;
+            var attributes = GetMatchingIncludeFiles(doc, "DeftConfigInitializer.exe");
+            foreach (var attribute in attributes)
+            {
+                if (attribute.Parent.Name.LocalName == "Content")
+                {
+                    attribute.Parent.Name = ns + "None";
+                    doc.Save(ProjectFile);
+                }
+            }
+
         }
 
         /// <summary>
