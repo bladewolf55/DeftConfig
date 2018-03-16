@@ -13,7 +13,6 @@
 
 Allows running user-specific settings in F5/F6, Publish, and Windows-based continuous integration, without having to commit developer or production configurations to version control.
     </description>
-    <releaseNotes></releaseNotes>
     <copyright>Copyright 2018 Charles L Flatt</copyright>
     <tags>msbuild configuration xmltransform</tags>
     <releaseNotes>
