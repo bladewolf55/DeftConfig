@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>DeftConfig</id>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <authors>Charles L Flatt</authors>
     <owners>Charles L Flatt</owners>
     <projectUrl>https://github.com/bladewolf55/DeftConfig</projectUrl>
@@ -16,7 +16,7 @@ Allows running user-specific settings in F5/F6, Publish, and Windows-based conti
     <copyright>Copyright 2018 Charles L Flatt</copyright>
     <tags>msbuild configuration xmltransform</tags>
     <releaseNotes>
-      1.1.0
+      1.1.1
       DeftConfigInitializer now prompts to set DeftConfigInitializer.exe Build Action to None. 
     </releaseNotes>
   </metadata>
