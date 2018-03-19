@@ -1,11 +1,46 @@
 # ![](images/juggler-100x100.png) DeftConfig
 
+>Web.config and app.config shouldn't be stored. They should be generated. DeftConfig helps with that.
+
+[NuGet Package](https://www.nuget.org/packages/DeftConfig/)
+
+[GitHub Repository](https://github.com/bladewolf55/DeftConfig)
+
+## Briefly
+The .Net configuration story has never been particularly good. It's improving significantly in .Net Core, but there's a lot of .Net Framework code that's built and going to be built.
+
+The fundamental problems with .Net Framework config files are:
+
+1. They require a physical file. A configuration can't be created in memory.
+2. They don't work well with multiple environments, even using XML Transformations as intended.
+3. They don't lend themselves to managing sensitive settings such as passwords, especially in a Continuous Integration environment.
+
+DeftConfig makes it easier to use the "base config" approach to managing configuration files using XML Transformations. It follows a convention for how it finds the transformation file.
+
+1. Look for a file in the format `web(or app).base.[Configuration].config`. Example: web.base.Release.config
+2. Check the user profile's `%APPDATA%\DeftConfig\{Project GUID}` folder
+3. Check the project folder
+4. If not found, use web/app.base.Sample.config
 
 ![](images/deft-config-flow.png)
 
+This approach allows for storing a production config, with sensitive settings, in a Windows Continuous Integration server's appropriate user profile rather than version control. The server folder can be restricted via permissions.
+
+It also allows multiple developers to have their own, local Debug config; it also doesn't get stored in source control.
+
+Finally, DeftConfig recommends maintaining a sample config that will help new developers understand what configurations need to be changed, and can provide a safe, default working experience.
+
+The package is just two components:
+
+1. An MSBuild targets file that applies the transformation and outputs the .config file.
+2. A utility to help configure the project, including adding an `.ignore` file for either Git or TFVC.
+
+>**Important**  
+>I don't guarantee DeftConfig will work in your environment. You need to take the right steps to protect your source code, including backups, version control, and testing.
+
 
 ## Goals
-DeftConfig achieves several goals. Web.config is used the examples below, but DeftConfig applies equally to app.config.
+DeftConfig achieves several goals. Web.config is used in the examples below, but DeftConfig applies equally to app.config.
 
 1. Don't store web.config or web.Debug/Release.config in source control.
 2. Don't store web.Debug.config in source control, allow independent developer configurations.
