@@ -6,6 +6,23 @@
 
 [GitHub Repository](https://github.com/bladewolf55/DeftConfig)
 
+[//]: # (TOC Begin)
+* [Briefly](#briefly)
+* [Goals](#goals)
+* [Cons](#cons)
+* [Installation](#installation)
+* [Files](#files)
+	* [web.base.config](#web.base.config)
+	* [web.base.Sample.config](#web.base.sample.config)
+	* [web.base.Debug.config](#web.base.debug.config)
+	* [web.base.Release.config](#web.base.release.config)
+* [Building a Configuration](#building-a-configuration)
+* [Where and How Transform Files are Searched](#where-and-how-transform-files-are-searched)
+* [Why Isn't Web.config Removed From the Project?](#why-isnt-web.config-removed-from-the-project)
+
+[//]: # (TOC End)
+
+
 ## Briefly
 The .Net configuration story has never been particularly good. It's improving significantly in .Net Core, but there's a lot of .Net Framework code that's built and going to be built.
 
@@ -184,33 +201,32 @@ DeftConfigInitializer will do this automatically if you choose.
 **Using Git**
 
 ```
-# Visual Studio 2015 Note: a pattern in the first line is ignored by Changes. Visual Studio Bug.
-# DeftConfig - Ignore/allow certain config files when using *.base.[Build].config transform method
-
-/[Ww]eb.config
-/[Ww]eb.*.config
-!/[Ww]eb.[Bb]ase.config
-!/[Ww]eb.[Bb]ase.[Ss]ample.config
-
-/[Aa]pp.config
-/[Aa]pp.*.config
-!/[Aa]pp.[Bb]ase.config
-!/[Aa]pp.[Bb]ase.[Ss]ample.config
+	#Visual Studio 2015 Note: a pattern in the first line is ignored by Changes. Visual Studio Bug.
+	#DeftConfig - Ignore/allow certain config files when using *.base.[Build].config transform method
+	
+	/[Ww]eb.config
+	/[Ww]eb.*.config
+	!/[Ww]eb.[Bb]ase.config
+	!/[Ww]eb.[Bb]ase.[Ss]ample.config
+	
+	/[Aa]pp.config
+	/[Aa]pp.*.config
+	!/[Aa]pp.[Bb]ase.config
+	!/[Aa]pp.[Bb]ase.[Ss]ample.config
+	```
+	
+	**Using TFVC**
+	
+	```
+	#TFVC Ignore
+	
+	\Web.config
+	\Web.*.config
+	!\Web.base.config
+	!\Web.base.Sample.config
+	
+	\App.config
+	\App.*.config
+	!\App.base.config
+	!\App.base.Sample.config
 ```
-
-**Using TFVS**
-
-```
-#TFVS Ignore
-
-\Web.config
-\Web.*.config
-!\Web.base.config
-!\Web.base.Sample.config
-
-\App.config
-\App.*.config
-!\App.base.config
-!\App.base.Sample.config
-```
-
