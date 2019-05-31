@@ -6,6 +6,8 @@
 
 [GitHub Repository](https://github.com/bladewolf55/DeftConfig)
 
+## Contents
+
 [//]: # (TOC Begin)
 * [Briefly](#briefly)
 * [Goals](#goals)
